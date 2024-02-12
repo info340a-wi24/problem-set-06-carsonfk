@@ -13,18 +13,19 @@ const COLORS_9 = {
 /* Your code goes here! */
 
 //Create a variable `h1` that refers to the `<h1>` element in the DOM.
-
+var h1 = document.getElementsByTagName("h1")[0];
 
 //Change the `textContent` of the `<h1>` element to be "Which Swatch?"
-
+h1.textContent = "Which Swatch?";
 
 //Somehow the rainbow icon image was included without an alt tag! Set its `alt`
 //attribute to be "A beautiful rainbow".
-
+var rb = document.getElementsByTagName("img")[0]
+rb.alt = "A beautiful rainbow";
 
 //Give the image the Bootstrap-provided `float-right` CSS class to make it float
 //to the right of the screen
-
+rb.classList.add("float-right");
 
 /*Define a function `createColorBox()` that takes in two parameters: a color 
 string (e.g., "blue") and a numeric size (in pixels, e.g., 100). The function 
@@ -38,8 +39,14 @@ should do the following:
 You can test this function by logging out the returned value and checking its
 attributes.
 */
-
-
+function createColorBox(color, size) {
+  let box = document.createElement("div");
+  box.classList.add("d-inline-block");
+  box.style.backgroundColor = color;
+  box.style.width = size + "px";
+  box.style.height = size + "px";
+  return box;
+}
 
 /* Define a function `getElementWidth()` that takes in a DOM element (not a 
 string!). This function should return the width in pixels (a number) of that
@@ -50,8 +57,9 @@ element.
    NOTE: The `getBoundingClientRect()` method already exists; do not define a
    new function for it! Just call the method on the DOM element.
 */
-
-
+function getElementWidth(element) {
+  return element.getBoundingClientRect().width;
+}
 
 /* Define a function `renderPaletteRow()` that takes in two arguments: array of 
 color strings (like a SINGLE ELEMENT of the `COLORS_9` object), and a "parent" 
@@ -74,7 +82,15 @@ browser window unless you refresh.
 You should NOT include any test calls when running Jest tests!
 */
 
-
+function renderPaletteRow(colors, element) {
+  let boxRow = document.createElement("div");
+  let width = getElementWidth(element) / colors.length;
+  for (let i = 0; i < colors.length; i++) {
+    let box = createColorBox(colors[i], width);
+    boxRow.append(box);
+  }
+  element.append(boxRow);
+}
 
 /* Define a function `renderPaletteTable()` that takes no arguments and renders 
 a color palette row for each of the palettes in the `COLORS_9` object into the 
@@ -87,8 +103,14 @@ Tip: note that `COLORS_9` is an object, not an array! You'll need to use a
 Call your `renderPaletteTable()` method to display all the color palettes!
 */
 
+function renderPaletteTable() {
+  let parent = document.getElementsByTagName("main")[0];
+  for (let i = 0; i < Object.keys(COLORS_9).length; i++) {
+    renderPaletteRow(COLORS_9[Object.keys(COLORS_9)[i]], parent);
+  }
+}
 
-
+renderPaletteTable();
 //Finally, remove the paragraph in the header that explains how to complete the 
 //problem.
 
