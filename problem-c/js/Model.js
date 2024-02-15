@@ -1,6 +1,6 @@
 'use strict';
 
-import initialTasks from "../js/task-data.js";
+import initialTasks from "./task-data.js";
 
 initialTasks.map((temp, index) => {
     temp.id = index + 1;
