@@ -8,9 +8,11 @@ initialTasks.map((temp, index) => {
 
 var currentTaskList = [...initialTasks];
 
-export function getIncompleteTasks(arr) {
-    return Object.values(arr).filter((arr) => arr.status == 'incomplete');
+export function getIncompleteTasks() {
+    return currentTaskList.filter((currentTaskList) => currentTaskList.status == "incomplete");
 }
+
+//console.log(getIncompleteTasks());
 
 export function addTask(string) {
     let task = {"description":string, "status":"incomplete", "id": currentTaskList[currentTaskList.length - 1].id + 1}
@@ -23,6 +25,6 @@ export function markComplete(id) {
         if (copy.id == id) {
             copy.status = "complete";
         }
+        return copy;
     });
-    return [...currentTaskList]
 }

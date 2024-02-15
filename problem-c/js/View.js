@@ -7,7 +7,7 @@ function renderSingleTask(task, markCompleteCallback) {
     list.classList.add("list-group-item");
     list.textContent = " " + task.description;
     let btn = document.createElement('button');
-    btn.classList.add("btn btm-sm btn-warning");
+    btn.classList.add("btn", "btm-sm", "btn-warning");
     btn.innerHTML = '<span class="material-icons-outlined">done</span>';
     btn.addEventListener("click", () => {
         markCompleteCallback(task);
@@ -18,7 +18,7 @@ function renderSingleTask(task, markCompleteCallback) {
 
 export function renderTaskList(markCompleteCallback) {
     let ul = document.createElement("ul");
-    ul.classList.add("list-group list-group-flush");
+    ul.classList.add("list-group", "list-group-flush");
     let tasks = getIncompleteTasks();
     if (tasks.length == 0) {
         let none = document.createElement("div");
