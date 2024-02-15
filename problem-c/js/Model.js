@@ -17,10 +17,10 @@ export function getIncompleteTasks() {
 export function addTask(string) {
     let task = {"description":string, "status":"incomplete", "id": currentTaskList[currentTaskList.length - 1].id + 1}
     currentTaskList = [...currentTaskList, task];
+    //console.log(currentTaskList);
 }
 
 export function markComplete(id) {
-    //console.log(currentTaskList);
     currentTaskList = currentTaskList.map((temp) => {
         let copy = {...temp};
         if (copy.id == id) {
@@ -28,7 +28,6 @@ export function markComplete(id) {
         }
         return copy;
     });
-    //console.log(currentTaskList);
 }
 
 //markComplete(3);
