@@ -6,10 +6,10 @@ function renderSingleTask(task, markCompleteCallback) {
     let list = document.createElement("li");
     list.classList.add("list-group-item");
     list.textContent = " " + task.description;
-    let btn = document.createElement('button');
+    let btn = document.createElement("button");
     btn.classList.add("btn", "btm-sm", "btn-warning");
     btn.innerHTML = '<span class="material-icons-outlined">done</span>';
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", (task) => {
         markCompleteCallback(task);
     });
     list.prepend(btn);

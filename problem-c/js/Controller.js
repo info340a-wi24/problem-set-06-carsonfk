@@ -16,7 +16,7 @@ export function renderTaskView() {
 
 var button = document.getElementById("add-task-button");
 button.addEventListener("click", () => {
-    var input = document.getElementById("input");
+    var input = document.getElementsByTagName("input")[0];
     if (input.value != "") {
         Model.addTask(input.value);
         input.value = "";

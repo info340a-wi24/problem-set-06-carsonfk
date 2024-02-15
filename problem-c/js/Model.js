@@ -20,11 +20,15 @@ export function addTask(string) {
 }
 
 export function markComplete(id) {
-    currentTaskList.map((temp) => {
-        var copy = temp;
+    //console.log(currentTaskList);
+    currentTaskList = currentTaskList.map((temp) => {
+        let copy = {...temp};
         if (copy.id == id) {
             copy.status = "complete";
         }
         return copy;
     });
+    //console.log(currentTaskList);
 }
+
+//markComplete(3);
